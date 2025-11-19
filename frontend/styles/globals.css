@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 255, 255, 255;
+  --background-end-rgb: 255, 255, 255;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+/* Ad container placeholders */
+.ad-container {
+  background-color: #f3f4f6;
+  border: 1px dashed #d1d5db;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9ca3af;
+  font-size: 0.875rem;
+}
+
+.ad-container.ad-top {
+  min-height: 90px;
+  margin: 1rem 0;
+}
+
+.ad-container.ad-sidebar {
+  min-height: 250px;
+  margin: 1rem 0;
+}
+
+.ad-container.ad-inline {
+  min-height: 280px;
+  margin: 2rem 0;
+}

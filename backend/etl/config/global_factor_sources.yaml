@@ -1,0 +1,110 @@
+# Global Factor Lab - Factor Data Source Configuration
+# This file defines how to ingest factor data from various sources
+
+sources:
+  # United States - Ken French Data Library
+  - country_code: US
+    country_name: United States
+    region_group: Developed
+    source_name: Ken French Data Library
+    frequency: Monthly
+    currency: USD
+    file_pattern: "us_factors/*.csv"
+    parser: ken_french
+    factor_mappings:
+      Mkt-RF: MKT
+      SMB: SMB
+      HML: HML
+      Mom: MOM
+      RMW: RMW
+      CMA: CMA
+      RF: RF
+    skip_rows: 0
+    date_column: Date
+    date_format: "%Y%m"
+
+  # Sweden - Swedish House of Finance
+  - country_code: SE
+    country_name: Sweden
+    region_group: Developed
+    source_name: Swedish House of Finance
+    frequency: Monthly
+    currency: SEK
+    file_pattern: "sweden_factors/*.csv"
+    parser: generic_csv
+    factor_mappings:
+      Market: MKT
+      Size: SMB
+      Value: HML
+      Momentum: MOM
+      Quality: QMJ
+    skip_rows: 1
+    date_column: date
+    date_format: "%Y-%m-%d"
+
+  # United Kingdom - AQR (example)
+  - country_code: UK
+    country_name: United Kingdom
+    region_group: Developed
+    source_name: AQR Capital
+    frequency: Monthly
+    currency: GBP
+    file_pattern: "uk_factors/*.csv"
+    parser: generic_csv
+    factor_mappings:
+      MKT: MKT
+      SMB: SMB
+      HML: HML
+      UMD: MOM
+      QMJ: QMJ
+      BAB: BAB
+    skip_rows: 0
+    date_column: DATE
+    date_format: "%Y-%m-%d"
+
+# Factor definitions - canonical factor codes and metadata
+factor_definitions:
+  - code: MKT
+    name: Market
+    group: Market
+    description: Market excess return (market return minus risk-free rate)
+
+  - code: SMB
+    name: Small Minus Big
+    group: Size
+    description: Return spread between small and large capitalization stocks
+
+  - code: HML
+    name: High Minus Low
+    group: Value
+    description: Return spread between high and low book-to-market stocks
+
+  - code: MOM
+    name: Momentum
+    group: Momentum
+    description: Return spread between past winners and losers (typically 12-month momentum)
+
+  - code: RMW
+    name: Robust Minus Weak
+    group: Profitability
+    description: Return spread between robust and weak profitability stocks
+
+  - code: CMA
+    name: Conservative Minus Aggressive
+    group: Investment
+    description: Return spread between conservative and aggressive investment firms
+
+  - code: QMJ
+    name: Quality Minus Junk
+    group: Quality
+    description: Return spread between high and low quality stocks
+
+  - code: BAB
+    name: Betting Against Beta
+    group: Low Risk
+    description: Return spread between low and high beta stocks
+
+  - code: RF
+    name: Risk-Free Rate
+    group: Risk-Free
+    description: Risk-free rate of return
