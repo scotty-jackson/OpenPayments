@@ -62,6 +62,64 @@ sources:
     date_column: DATE
     date_format: "%Y-%m-%d"
 
+  # Japan - Local Factor Research
+  - country_code: JP
+    country_name: Japan
+    region_group: Developed
+    source_name: Japan Factor Research
+    frequency: Monthly
+    currency: JPY
+    file_pattern: "japan_factors/*.csv"
+    parser: generic_csv
+    factor_mappings:
+      Market: MKT
+      Size: SMB
+      Value: HML
+      Momentum: MOM
+      Quality: QMJ
+    skip_rows: 0
+    date_column: date
+    date_format: "%Y-%m-%d"
+
+  # Germany - European Factor Research
+  - country_code: DE
+    country_name: Germany
+    region_group: Developed
+    source_name: European Factor Research
+    frequency: Monthly
+    currency: EUR
+    file_pattern: "germany_factors/*.csv"
+    parser: generic_csv
+    factor_mappings:
+      Market: MKT
+      Size: SMB
+      Value: HML
+      Momentum: MOM
+      Quality: QMJ
+      LowVol: LOWVOL
+    skip_rows: 0
+    date_column: date
+    date_format: "%Y-%m-%d"
+
+  # France - European Factor Research
+  - country_code: FR
+    country_name: France
+    region_group: Developed
+    source_name: European Factor Research
+    frequency: Monthly
+    currency: EUR
+    file_pattern: "france_factors/*.csv"
+    parser: generic_csv
+    factor_mappings:
+      MKT: MKT
+      SMB: SMB
+      HML: HML
+      UMD: MOM
+      QMJ: QMJ
+    skip_rows: 0
+    date_column: DATE
+    date_format: "%Y-%m-%d"
+
 # Factor definitions - canonical factor codes and metadata
 factor_definitions:
   - code: MKT
@@ -108,3 +166,8 @@ factor_definitions:
     name: Risk-Free Rate
     group: Risk-Free
     description: Risk-free rate of return
+
+  - code: LOWVOL
+    name: Low Volatility
+    group: Low Risk
+    description: Return spread between low and high volatility stocks
